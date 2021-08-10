@@ -12,8 +12,8 @@ do
 
     echo $str1 >> result.log
     echo $str2 >> result.log
-    python3 ../../../conversation-eval.py --gold ../../../DSTC8_DATA/Task_4/dev/*anno* --auto $str2 >> result.log
+    python3 ../../../task-4-evaluation.py --gold ../../../DSTC8_DATA/Task_4/dev/*anno* --auto $str2 >> result.log
     echo $str3 >> result.log
-    python3 ../../../conversation-eval.py --gold ../../../DSTC8_DATA/Task_4/test/*anno* --auto $str3 >> result.log
+    python3 ../../../task-4-evaluation.py --gold ../../../DSTC8_DATA/Task_4/test/*anno* --auto $str3 >> result.log
 done
 
