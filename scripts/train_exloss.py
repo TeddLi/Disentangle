@@ -340,17 +340,15 @@ def train():
                 for epoch in range(num_epochs):
                     random.shuffle(dataset)
                     train_dataset_, dataset_cluster_ = zip(*dataset)
-#                    for i in range(0, len(train_dataset_), batch_size):
-#                        train_batch = train_dataset_[i:i + batch_size]
-#                        cluster_batch = dataset_cluster_[i:i+batch_size]
-#                        cluster_batch = exloss_weight(cluster_batch, cluster_loss_weight)
-                        # pdb.set_trace()
-#                        batch_input_ids, batch_input_masks, batch_token_types, batch_masks, batch_labels, batch_target_index, batch_candi_indexs, batch_features, batch_gold, data_cluster = batch2idxs(
-#                            train_batch, cluster_batch, max_turns, tokenizer, max_seq_length)
-                        # pdb.set_trace()
-#                        loss = train_run_step(sess, batch_input_ids, batch_input_masks, batch_token_types, batch_masks,
-#                                              batch_labels,
-#                                              batch_target_index, batch_candi_indexs, batch_features, batch_gold, cluster_batch, model)
+                    for i in range(0, len(train_dataset_), batch_size):
+                        train_batch = train_dataset_[i:i + batch_size]
+                        cluster_batch = dataset_cluster_[i:i+batch_size]
+                        cluster_batch = exloss_weight(cluster_batch, cluster_loss_weight)
+                        batch_input_ids, batch_input_masks, batch_token_types, batch_masks, batch_labels, batch_target_index, batch_candi_indexs, batch_features, batch_gold, data_cluster = batch2idxs(
+                            train_batch, cluster_batch, max_turns, tokenizer, max_seq_length)
+                        loss = train_run_step(sess, batch_input_ids, batch_input_masks, batch_token_types, batch_masks,
+                                              batch_labels,
+                                              batch_target_index, batch_candi_indexs, batch_features, batch_gold, cluster_batch, model)
                     saver.save(sess, save_dir + '/epoch_' + str(epoch) + '_model.ckpt', epoch)
                     evaluate(epoch, sess, model)
                     evaluate_final(epoch, sess, model)

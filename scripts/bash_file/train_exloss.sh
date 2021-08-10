@@ -17,5 +17,5 @@ python -u ../train_exloss.py \
   --model_dir ../ckpt/\
   --adapt_model_dir ../../Adaptation\
   --cluster_loss_weight 0.2\
-  --lr 2e-5 > ../logs/train_exloss_02_dec.log 2>&1 &
+  --lr 2e-5 > ../logs/train_exloss.log 2>&1 &
 
